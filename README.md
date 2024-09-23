@@ -33,10 +33,6 @@ AgriPest-Weather-ETL/
 │   ├── test.py            # Contains a sample to test the ETL
 │   └── main.py            # Sets up the entire ETL pipeline
 │
-├── config/
-│   ├── .gitignore         # Ignores sensitive and unnecessary files
-│   └── .gitattributes     # Manages file attributes like line endings
-│
 ├── data/
 │   └── RICE.csv           # The dataset used in the ETL process
 │
@@ -46,6 +42,8 @@ AgriPest-Weather-ETL/
 ├── assets/
 │   └── task_scheduler.jpg # Image of the task scheduler setup
 │
+├── .gitignore             # Ignores sensitive and unnecessary files
+├── .gitattributes         # Manages file attributes like line endings
 ├── README.md              # Project documentation
 └── requirements.txt       # Python dependencies
 ```
