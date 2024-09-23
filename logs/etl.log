@@ -1,0 +1,10 @@
+2024-09-23 22:00:01,850:INFO:Starting ETL pipeline...
+2024-09-23 22:00:02,009:INFO:Successfully extracted data from C:\RICE.csv.
+2024-09-23 22:00:02,018:INFO:Data validation successful.
+2024-09-23 22:00:02,019:INFO:Extraction and validation took: 0.17 seconds
+2024-09-23 22:00:02,102:INFO:Data cleaned, and new features added successfully.
+2024-09-23 22:00:02,145:INFO:Aggregations completed successfully.
+2024-09-23 22:00:02,146:INFO:Transformation took: 0.13 seconds
+2024-09-23 22:00:06,856:INFO:Data loaded successfully into the pest_weather_data table.
+2024-09-23 22:00:06,856:INFO:Loading took: 4.71 seconds
+2024-09-23 22:00:06,856:INFO:ETL pipeline completed in: 5.01 seconds
