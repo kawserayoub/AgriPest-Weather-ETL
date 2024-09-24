@@ -75,6 +75,3 @@ This will:
 - Validate the data to ensure all required columns and values are present.
 - Transform the data to calculate new features such as temperature range and average humidity.
 - Load the transformed data into a SQL database.
-
-## 4. Automated Scheduling
-The ETL pipeline can be scheduled to run automatically using a task scheduler. You can refer to the image in the assets/task_scheduler.jpg to see how the task scheduler is set up for this project.
