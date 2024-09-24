@@ -30,7 +30,7 @@ AgriPest-Weather-ETL/
 │   ├── extract.py         # Handles data extraction from CSV
 │   ├── transform.py       # Transforms data and creates new features
 │   ├── load.py            # Loads data into a SQL database
-│   ├── test.py            # Contains a sample to test the ETL
+│   ├── etl_test.py        # Contains a sample to test the ETL
 │   └── main.py            # Sets up the entire ETL pipeline
 │
 ├── config/
@@ -40,12 +40,10 @@ AgriPest-Weather-ETL/
 ├── data/
 │   └── RICE.csv           # The dataset used in the ETL process
 │
-├── logs/
-│   └── etl.log            # Logs generated during the ETL process
-│
 ├── assets/
-│   └── task_scheduler.jpg # Image of the task scheduler setup
+│   └── task_scheduler.png # Image of the task scheduler setup
 │
+├── etl.log                # Logs generated during the ETL process
 ├── README.md              # Project documentation
 └── requirements.txt       # Python dependencies
 ```
@@ -61,12 +59,10 @@ Install the rquired dependencies listed in requirments.txt:
 pip install -r requirements.txt
 ```
 
-Create a .env file in the config/ directory with your database credentials. For example:
+Create a .env file with your database credentials. For example:
 ```bash
 DB_HOST=your_database_host
 DB_NAME=your_database_name
-DB_USER=your_database_user
-DB_PASS=your_database_password
 ```
 ## 3. Run the ETL Pipeline
 You can run the entire ETL pipeline by executing the main.py script:
@@ -82,6 +78,3 @@ This will:
 
 ## 4. Automated Scheduling
 The ETL pipeline can be scheduled to run automatically using a task scheduler. You can refer to the image in the assets/task_scheduler.jpg to see how the task scheduler is set up for this project.
-
-# Contact
-Feel free to open an issue if you encounter any problems or have suggestions for improvement.

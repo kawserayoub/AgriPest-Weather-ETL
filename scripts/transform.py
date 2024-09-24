@@ -1,7 +1,6 @@
 import pandas as pd
 import logging
-
-from extract import validate_data
+from extract import extract_data, validate_data
 
 logging.basicConfig(
     filename='etl.log', 
@@ -15,12 +14,15 @@ def transform_data(df):
     performing aggregations.
     """
     try:
-        # Clean the data by replacing missing values with 0
-        df.fillna(0, inplace=True)
-        
-        # Convert 'Observation Year' and 'Standard Week' to a datetime-like object
-        df['Observation Date'] = pd.to_datetime(df['Observation Year'].astype(str) + df['Standard Week'].astype(str) + '1', format='%G%V%u')
-
+        # Logging missing values for key columns
+        if df['Pest Value'].isna().any():
+            logging.warning('Missing values detected in pest_avg after aggregation.')
+        if df[['MaxT', 'MinT', 'RH1(%)', 'RH2(%)']].isna().any().any():
+            logging.warning('Missing values detected in weekly_weather after aggregation.')
+            
+        #Fill missing values with default values for critical numeric columns
+        df.fillna({'Pest Value': 0, 'MaxT': 0, 'MinT': 0, 'RH1(%)': 0, 'RH2(%)': 0}, inplace=True)
+            
         # Calculate the temperature range (difference between max and min temperature)
         df['Temp Range'] = df['MaxT'] - df['MinT']
 
@@ -32,16 +34,16 @@ def transform_data(df):
         # Average pest value grouped by year and pest name
         pest_avg = df.groupby(['Observation Year', 'PEST NAME'])['Pest Value'].mean().reset_index()
 
-        # Group by year and week to get average weather conditions
+        # Aggregate weather data by year and week
         weekly_weather = df.groupby(['Observation Year', 'Standard Week']).agg({
-            'MaxT': 'mean',
-            'MinT': 'mean',
-            'Temp Range': 'mean',
-            'Avg Humidity': 'mean',
-            'RF(mm)': 'sum',  # Sum of rainfall
-            'WS(kmph)': 'mean',
-            'SSH(hrs)': 'mean',
-            'EVP(mm)': 'mean'
+            'MaxT': 'mean',           # Avg of max temp
+            'MinT': 'mean',           # Avg of min temp
+            'Temp Range': 'mean',     # Avg of temp range
+            'Avg Humidity': 'mean',   # Avg of calculated humidity
+            'RF(mm)': 'sum',          # Sum of rainfall in millimeters
+            'WS(kmph)': 'mean',       # Avg wind speed in km/h
+            'SSH(hrs)': 'mean',       # Avg sunshine hours
+            'EVP(mm)': 'mean'         # Avg evaporation in millimeters
         }).reset_index()
 
         logging.info("Aggregations completed successfully.")
@@ -49,7 +51,7 @@ def transform_data(df):
         return df, pest_avg, weekly_weather
 
     except Exception as e:
-        logging.error(f"Error during data transformation: {e}")
+        logging.error(f"Error during data transformation: {e}", exc_info=True)
         raise
 
 if __name__ == "__main__":

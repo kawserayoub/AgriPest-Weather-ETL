@@ -31,7 +31,17 @@ def main():
 
         # Step 3: Load data to SQL
         load_start = time.time()
-        load_data(df_transformed, 'pest_weather_data') 
+
+        # Load each of the tables into the SQL database
+        load_data(df_transformed, 'pest_weather_data')
+        logging.info("Loaded data into pest_weather_data table.")
+        
+        load_data(pest_avg, 'pest_avg_data')
+        logging.info("Loaded data into pest_avg_data table.")
+        
+        load_data(weekly_weather, 'weekly_weather_data')
+        logging.info("Loaded data into weekly_weather_data table.")
+        
         logging.info(f"Loading took: {time.time() - load_start:.2f} seconds")
 
         logging.info(f"ETL pipeline completed in: {time.time() - start_time:.2f} seconds")

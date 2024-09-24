@@ -31,16 +31,18 @@ def load_data(df, table_name):
     except Exception as e:
         logging.error(f"Error loading data into SQL: {e}")
         raise
-    finally:
-        connection.close()
 
 if __name__ == "__main__":
     try:
+        # Load all the dataframes
         df_transformed = pd.read_csv("transformed_data.csv")
-        
-        table_name = 'pest_weather_data' 
-        
-        load_data(df_transformed, table_name)
+        pest_avg = pd.read_csv("pest_avg.csv")
+        weekly_weather = pd.read_csv("weekly_weather.csv")
+
+        # Load each table into the SQL database
+        load_data(df_transformed, 'pest_weather_data')
+        load_data(pest_avg, 'pest_avg_data')
+        load_data(weekly_weather, 'weekly_weather_data')
 
     except Exception as e:
         logging.error(f"Loading process failed: {e}")

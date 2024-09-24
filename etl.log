@@ -1,0 +1,15 @@
+2024-09-24 21:01:05,559:INFO:Starting ETL pipeline...
+2024-09-24 21:01:05,588:INFO:Successfully extracted data from C:\RICE.csv.
+2024-09-24 21:01:05,598:INFO:Data validation successful.
+2024-09-24 21:01:05,598:INFO:Extraction and validation took: 0.04 seconds
+2024-09-24 21:01:05,598:INFO:Data cleaned, and new features added successfully.
+2024-09-24 21:01:05,616:INFO:Aggregations completed successfully.
+2024-09-24 21:01:05,616:INFO:Transformation took: 0.02 seconds
+2024-09-24 21:01:11,323:INFO:Data loaded successfully into the pest_weather_data table.
+2024-09-24 21:01:11,323:INFO:Loaded data into pest_weather_data table.
+2024-09-24 21:01:11,427:INFO:Data loaded successfully into the pest_avg_data table.
+2024-09-24 21:01:11,427:INFO:Loaded data into pest_avg_data table.
+2024-09-24 21:01:12,011:INFO:Data loaded successfully into the weekly_weather_data table.
+2024-09-24 21:01:12,011:INFO:Loaded data into weekly_weather_data table.
+2024-09-24 21:01:12,011:INFO:Loading took: 6.40 seconds
+2024-09-24 21:01:12,011:INFO:ETL pipeline completed in: 6.45 seconds
