@@ -33,17 +33,18 @@ AgriPest-Weather-ETL/
 │   ├── etl_test.py        # Contains a sample to test the ETL
 │   └── main.py            # Sets up the entire ETL pipeline
 │
-├── config/
-│   ├── .gitignore         # Ignores sensitive and unnecessary files
-│   └── .gitattributes     # Manages file attributes like line endings
-│
 ├── data/
 │   └── RICE.csv           # The dataset used in the ETL process
 │
 ├── assets/
 │   └── task_scheduler.png # Image of the task scheduler setup
 │
+<<<<<<< HEAD
 ├── etl.log                # Logs generated during the ETL process
+=======
+├── .gitignore             # Ignores sensitive and unnecessary files
+├── .gitattributes         # Manages file attributes like line endings
+>>>>>>> b91280365518eb48913cfd9ba0bc6ef83216c980
 ├── README.md              # Project documentation
 └── requirements.txt       # Python dependencies
 ```
@@ -74,4 +75,14 @@ This will:
 - Extract the pest and weather data from RICE.csv.
 - Validate the data to ensure all required columns and values are present.
 - Transform the data to calculate new features such as temperature range and average humidity.
+<<<<<<< HEAD
 - Load the transformed data into a SQL database.
+=======
+- Load the transformed data into a SQL database.
+
+## 4. Automated Scheduling
+The ETL pipeline can be scheduled to run automatically using a task scheduler. You can refer to the image in the assets/task_scheduler.jpg to see how the task scheduler is set up for this project.
+
+# Contact
+Feel free to open an issue if you encounter any problems or have suggestions for improvement.
+>>>>>>> b91280365518eb48913cfd9ba0bc6ef83216c980
